@@ -89,7 +89,7 @@ export function WorksMenuMobile() {
       <Link href={"/i/how-execution-timeline-works"}>{t("Will Execution")}</Link>
       <Link href={"/how-factors-work"}>{t("Security Factors")}</Link>
       <Link href={"/i/cascade-encryption"}>{t("Encryption Layers")}</Link>
-      <Link href={"/i/time-capsule-encryption"}>{t("{t("Time Capsule")} Encryption")}</Link>
+      <Link href={"/i/time-capsule-encryption"}>{t("Time Capsule Encryption")}</Link>
     </div>
   );
 }
