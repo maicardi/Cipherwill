@@ -1,7 +1,7 @@
-import { t } from "@/common/i18n";
 // Wraps app pages in authenticated account and encryption-session providers.
 // Owns shared app metadata and delegates route-specific layout to AppPageShell.
 // Does not render guided objectives or load overview metrics.
+import { t } from "@/common/i18n";
 import { Metadata } from "next";
 import AppPageShell from "@/components/app/common/AppPageShell";
 import { AuthRedirectProvider } from "../../contexts/AuthRedirect";
