@@ -6,6 +6,7 @@
  */
 
 "use client";
+import { t } from "@/common/i18n";
 
 import Link from "next/link";
 import { BiCheckCircle, BiCircle } from "react-icons/bi";
@@ -39,10 +40,10 @@ export default function CompleteNoteCreationStep({ isComplete }: CompleteNoteCre
               : "text-gray-800 dark:text-gray-200 group-hover:text-primary"
           }`}
         >
-          Save your first item
+          {t("Save your first item")}
         </span>
         <span className="text-xs text-gray-500 dark:text-gray-400 leading-normal">
-          Save a note, password, or document for your beneficiary.
+          {t("Save a note, password, or document for your beneficiary.")}
         </span>
       </div>
     </Link>
