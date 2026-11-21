@@ -1,7 +1,7 @@
-import { currentLocale, t } from "@/common/i18n";
 // Provides the shared document shell, metadata, and application providers.
 // Owns the production URL base and default canonical for each route.
 // Leaves content-specific metadata and pagination to individual pages.
+import { currentLocale, t } from "@/common/i18n";
 import { AuthProvider } from "../contexts/AuthContext";
 import { ApolloContext } from "../contexts/ApolloContext";
 import { Metadata, Viewport } from "next";
