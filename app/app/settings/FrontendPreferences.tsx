@@ -1,4 +1,5 @@
 "use client";
+import { t } from "@/common/i18n";
 
 import { useState } from "react";
 import {
@@ -30,21 +31,21 @@ export default function FrontendPreferences() {
     setPreferences(DEFAULT_UI_PREFERENCES);
     setUiPreferences(DEFAULT_UI_PREFERENCES);
     applyUiPreferences(DEFAULT_UI_PREFERENCES);
-    toast.success("Preferences reset to defaults");
+    toast.success(t("Preferences reset to defaults"));
   };
 
   return (
     <div className="border border-default w-full max-w-2xl rounded-md bg-secondary">
       <h2 className="font-semibold border-b border-default p-3">
-        Interface Preferences
+        {t("Interface Preferences")}
       </h2>
       <div className="p-3 flex flex-col gap-4">
         <p className="text-sm text-neutral-600 dark:text-neutral-300">
-          These settings are saved in your browser and applied immediately.
+          {t("These settings are saved in your browser and applied immediately.")}
         </p>
 
         <label className="flex items-center justify-between gap-4">
-          <span className="text-sm font-medium">Font size</span>
+          <span className="text-sm font-medium">{t("Font size")}</span>
           <Select
             className="text-sm min-w-42.5"
             value={preferences.fontSize}
@@ -52,15 +53,15 @@ export default function FrontendPreferences() {
               updatePreference("fontSize", value as UiPreferences["fontSize"])
             }
             options={[
-              { label: "Small", value: "small" },
-              { label: "Medium", value: "medium" },
-              { label: "Large", value: "large" },
+              { label: t("Small"), value: "small" },
+              { label: t("Medium"), value: "medium" },
+              { label: t("Large"), value: "large" },
             ]}
           />
         </label>
 
         <label className="flex items-center justify-between gap-4">
-          <span className="text-sm font-medium">Motion</span>
+          <span className="text-sm font-medium">{t("Motion")}</span>
           <Select
             className="text-sm min-w-42.5"
             value={preferences.motion}
@@ -68,14 +69,14 @@ export default function FrontendPreferences() {
               updatePreference("motion", value as UiPreferences["motion"])
             }
             options={[
-              { label: "Full motion", value: "full" },
-              { label: "Reduced motion", value: "reduced" },
+              { label: t("Full motion"), value: "full" },
+              { label: t("Reduced motion"), value: "reduced" },
             ]}
           />
         </label>
 
         <label className="flex items-center justify-between gap-4">
-          <span className="text-sm font-medium">Scrolling</span>
+          <span className="text-sm font-medium">{t("Scrolling")}</span>
           <Select
             className="text-sm min-w-42.5"
             value={preferences.scrollBehavior}
@@ -86,14 +87,14 @@ export default function FrontendPreferences() {
               )
             }
             options={[
-              { label: "Smooth", value: "smooth" },
-              { label: "Instant", value: "instant" },
+              { label: t("Smooth"), value: "smooth" },
+              { label: t("Instant"), value: "instant" },
             ]}
           />
         </label>
 
         <label className="flex items-center justify-between gap-4">
-          <span className="text-sm font-medium">Content width</span>
+          <span className="text-sm font-medium">{t("Content width")}</span>
           <Select
             className="text-sm min-w-42.5"
             value={preferences.contentWidth}
@@ -104,8 +105,8 @@ export default function FrontendPreferences() {
               )
             }
             options={[
-              { label: "Full width", value: "full" },
-              { label: "Reading", value: "reading" },
+              { label: t("Full width"), value: "full" },
+              { label: t("Reading"), value: "reading" },
             ]}
           />
         </label>
@@ -116,7 +117,7 @@ export default function FrontendPreferences() {
             onClick={resetToDefault}
             type="button"
           >
-            Reset to defaults
+            {t("Reset to defaults")}
           </button>
         </div>
       </div>
