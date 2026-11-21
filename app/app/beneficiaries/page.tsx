@@ -1,4 +1,5 @@
 "use client";
+import { t } from "@/common/i18n";
 import { useEffect, useState } from "react";
 import { useLazyQuery } from "@apollo/client/react";
 import BeneficiaryList from "../../../components/app/smartwill/beneficiary-list/BeneficiaryList";
@@ -49,27 +50,25 @@ export default function Smartwill() {
     })();
   }, [getKeyCount]);
 
-  if (user_loading) return <div>Loading...</div>;
+  if (user_loading) return <div>{t("Loading...")}</div>;
   if (user?.birth_date === "0") return <IncompleteProfile />;
 
   return (
     <div className="w-full">
-      <DesktopAndMobilePageHeader title="Beneficiaries">
+      <DesktopAndMobilePageHeader title={t("Beneficiaries")}>
         <SimpleButton
           disabled={isAddingBeneficiary}
           onClick={() => {
             setPersonSelectionDialogOpen("beneficiary");
           }}
         >
-          {isAddingBeneficiary ? "Adding..." : "Add a person"}
+          {isAddingBeneficiary ? t("Adding...") : t("Add a person")}
         </SimpleButton>
       </DesktopAndMobilePageHeader>
 
       <div className="p-4">
         <div className="text-sm font-medium mb-4 max-w-2xl">
-          Beneficiaries will receive access to your data after the will is
-          executed. They will receive notification and a special dashboard to
-          decrypt and access data that you've encrypted for them to access
+          {t("Beneficiaries will receive access to your data after the will is executed. They will receive notification and a special dashboard to decrypt and access data that you've encrypted for them to access")}
         </div>
         <BeneficiaryList
           max_key_count={max_key_count}
