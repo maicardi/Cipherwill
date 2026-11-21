@@ -1,3 +1,4 @@
+import { currentLocale, t } from "@/common/i18n";
 // Provides the shared document shell, metadata, and application providers.
 // Owns the production URL base and default canonical for each route.
 // Leaves content-specific metadata and pagination to individual pages.
@@ -14,9 +15,9 @@ import DynamicToaster from "@/components/common/DynamicToaster";
 // This works with dynamic imports to lower LCP
 const CSSImporter = dynamic(() => import("@/components/CSSImporter"));
 
-const title = "Cipherwill - Dead Man's Switch for Digital Assets";
+const title = t("Cipherwill - Dead Man's Switch for Digital Assets");
 const description =
-  "Secure your digital assets with Cipherwill's Dead Man's Switch. Ensure seamless transfer of critical information to your beneficiaries. Protect your legacy today!";
+  t("Secure your digital assets with Cipherwill's Dead Man's Switch. Ensure seamless transfer of critical information to your beneficiaries. Protect your legacy today!");
 export const metadata: Metadata = {
   title,
   description,
@@ -52,7 +53,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={currentLocale()} suppressHydrationWarning>
       {/* <meta
         name="adopt-website-id"
         content="b339be64-92db-44ef-a97a-bb6470fbd9f5"
