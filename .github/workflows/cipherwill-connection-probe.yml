@@ -1,0 +1,67 @@
+# One-off, nonauthenticated connectivity/CORS diagnostic; deleted after the test.
+name: Temporary Cipherwill API connectivity probe
+on:
+  push:
+    branches: [feature/italian-localization]
+    paths: [.github/workflows/cipherwill-connection-probe.yml]
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Probe public frontend and discover public API endpoint
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import re, urllib.request, urllib.error, urllib.parse
+          BASE='https://www.cipherwill.com'
+          origin='https://prova-dms.example.org'
+          def request(url,method='GET',headers=None,body=None,timeout=12):
+              h={'User-Agent':'Mozilla/5.0 CipherwillCompatibilityProbe/1.0','Accept':'*/*'}
+              if headers:h.update(headers)
+              req=urllib.request.Request(url,headers=h,method=method,data=body)
+              try:
+                  with urllib.request.urlopen(req,timeout=timeout) as res:
+                      return res.status,dict(res.headers),res.read(3500000)
+              except urllib.error.HTTPError as e:
+                  return e.code,dict(e.headers),e.read(10000)
+              except Exception as e:
+                  print('REQUEST_ERROR',url,type(e).__name__,str(e)[:200])
+                  return None,{},b''
+          status,headers,home=request(BASE)
+          print('FRONTEND_HOME_STATUS',status,'FINAL_BYTES',len(home))
+          if status is None:raise SystemExit(0)
+          urls=[]
+          for page in ('/', '/auth'):
+              s,h,data=(status,headers,home) if page=='/' else request(BASE+page)
+              print('PAGE',page,'STATUS',s)
+              html=data.decode('utf-8','ignore')
+              urls.extend(re.findall(r'<script[^>]+src=["\']([^"\']+)["\']',html,re.I))
+          urls=list(dict.fromkeys(urllib.parse.urljoin(BASE,u) for u in urls if '/_next/static/' in u))
+          print('JS_ASSETS_DISCOVERED',len(urls))
+          found=set()
+          for n,url in enumerate(urls[:100],1):
+              st,hd,blob=request(url,timeout=8)
+              if st!=200:continue
+              js=blob.decode('utf-8','ignore')
+              for found_url in re.findall(r'https?://[a-zA-Z0-9._:/?&=%+\\-]+',js):
+                  cleaned=found_url.rstrip('.;,')
+                  if ('cipherwill' in cleaned.lower() or '/graphql' in cleaned.lower()) and len(cleaned)<220:
+                      found.add(cleaned)
+          print('PUBLIC_URLS_IN_BUNDLES')
+          for url in sorted(found):
+              print(' ',url)
+          candidates=[u for u in found if ('api.' in u or '/graphql' in u or 'backend.' in u) and 'cipherwill' in u]
+          if not candidates:
+              print('API_ENDPOINT_NOT_CONFIRMED_FROM_BUNDLES')
+          for url in candidates[:5]:
+              print('PROBE_API_URL',url)
+              for method,reqheaders in [
+                  ('GET',{'Origin':origin}),
+                  ('OPTIONS',{'Origin':origin,'Access-Control-Request-Method':'POST','Access-Control-Request-Headers':'authorization,content-type'})
+              ]:
+                  s,hs,body=request(url,method,reqheaders)
+                  print(' RESULT',method,s,'allow-origin=',hs.get('Access-Control-Allow-Origin','(none)'),'allow-methods=',hs.get('Access-Control-Allow-Methods','(none)'),'allow-headers=',hs.get('Access-Control-Allow-Headers','(none)'),'content-type=',hs.get('Content-Type','(none)'),'body=',body[:250].decode('utf-8','replace').replace('\n',' '))
+          PY
