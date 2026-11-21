@@ -1,7 +1,7 @@
-import { t } from "@/common/i18n";
 // What it does: Displays the password-reset form and its backend email outcome.
 // What it owns: Reset input, loading state, and accepted or skipped feedback.
 // What it does NOT do: Decide recipient eligibility or send email directly.
+import { t } from "@/common/i18n";
 
 import { useState } from "react";
 import toast from "react-hot-toast";
