@@ -65,3 +65,22 @@ jobs:
                   s,hs,body=request(url,method,reqheaders)
                   print(' RESULT',method,s,'allow-origin=',hs.get('Access-Control-Allow-Origin','(none)'),'allow-methods=',hs.get('Access-Control-Allow-Methods','(none)'),'allow-headers=',hs.get('Access-Control-Allow-Headers','(none)'),'content-type=',hs.get('Content-Type','(none)'),'body=',body[:250].decode('utf-8','replace').replace('\n',' '))
           PY
+
+      - name: Compare real and foreign Origin preflight responses
+        shell: bash
+        run: |
+          set +e
+          api='https://api.stack.cipherwill.com/v1/'
+          for origin in 'https://www.cipherwill.com' 'https://cipherwill.com' 'http://localhost:3000' 'https://prova-dms.example.org'; do
+            echo "==== ORIGIN: $origin ===="
+            curl --silent --show-error --max-time 15 --request OPTIONS --dump-header - \
+              --header "Origin: $origin" \
+              --header "Access-Control-Request-Method: POST" \
+              --header "Access-Control-Request-Headers: authorization,content-type" \
+              --output /dev/null "$api" | grep -Ei '^(HTTP/|access-control-|vary:|server:|content-type:)' || true
+            echo "==== NONMUTATING GRAPHQL GET ===="
+            curl --silent --show-error --max-time 15 --get --data-urlencode 'query={__typename}' \
+              --dump-header - --header "Origin: $origin" \
+              --header 'Apollo-Require-Preflight: true' \
+              --output /dev/null "$api" | grep -Ei '^(HTTP/|access-control-|vary:|content-type:)' || true
+          done
