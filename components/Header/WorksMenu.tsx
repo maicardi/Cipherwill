@@ -1,9 +1,9 @@
-import { t } from "@/common/i18n";
 /**
  * WorksMenu component defining desktop and mobile navigation layouts for "How it works".
  * Owns the split-pane mega-menu contents and mobile links.
  * Does NOT handle the main header container states or styling.
  */
+import { t } from "@/common/i18n";
 
 import Link from "next/link";
 
