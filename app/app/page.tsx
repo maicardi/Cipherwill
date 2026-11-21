@@ -1,3 +1,4 @@
+import { t } from "@/common/i18n";
 /**
  * app/app/page.tsx
  * What it does: Renders the primary user dashboard home layout.
@@ -44,7 +45,7 @@ export default function App() {
                   href="/executor"
                   className="border border-primary p-1 rounded-md"
                 >
-                  Executor Dashboard
+                  {t("Executor Dashboard")}
                 </Link>
               </DevOnly>
             </div>
