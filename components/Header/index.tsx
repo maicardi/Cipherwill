@@ -5,6 +5,7 @@
  */
 
 "use client";
+import { t } from "@/common/i18n";
 
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
@@ -147,7 +148,7 @@ export default function Header({
                     handleMouseLeaveLink();
                   }}
                 >
-                  {item.title}
+                  {t(item.title)}
                 </div>
               </LinkToTheTop>
             );
@@ -159,7 +160,7 @@ export default function Header({
               className="bg-linear-to-r from-primary-700 to-primary text-white font-semibold shadow-sm hover:shadow-level-1 active:scale-[0.98] transition-all duration-200 ease-cw-ease px-5 py-2 rounded-xl text-sm m-2 cursor-pointer"
             >
               <div className="mt-[1px] sm:mt-0">
-                {user ? "Dashboard" : "Login/Signup"}
+                {user ? t("Dashboard") : t("Login/Signup")}
               </div>
             </div>
           </LinkToTheTop>
