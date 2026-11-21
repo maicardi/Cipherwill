@@ -195,7 +195,12 @@ const italian: Record<string, string> = {
   "Cipherwill - Dead Man's Switch for Digital Assets": "Cipherwill - Testamento digitale con Dead Man's Switch",
   "Secure your digital assets with Cipherwill's Dead Man's Switch. Ensure seamless transfer of critical information to your beneficiaries. Protect your legacy today!": "Proteggi i tuoi beni digitali con Cipherwill. Trasmetti informazioni importanti ai beneficiari tramite Dead Man's Switch e preserva la tua eredità digitale.",
   "Cipherwill web application": "Applicazione web Cipherwill",
-  "Executor Dashboard": "Pannello esecutore"
+  "Executor Dashboard": "Pannello esecutore",
+  "End-to-End Encrypted Dead Man's Switch - Cipherwill": "Dead Man's Switch con cifratura end-to-end - Cipherwill",
+  "Cipherwill is an End-to-End Encrypted Dead Man's Switch, securely automating asset transfers to loved ones when you're gone, with advanced encryption and ease.": "Cipherwill è un Dead Man's Switch con cifratura end-to-end che automatizza in modo sicuro il trasferimento dei beni digitali alle persone care.",
+  "Autonomous Protection": "Protezione autonoma",
+  "Dead Man's Switch": "Dead Man's Switch",
+  "How the Switch Works": "Come funziona il sistema"
 };
 
 export function currentLocale(): "en" | "it" {
