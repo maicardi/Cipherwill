@@ -3,6 +3,7 @@
 // What it does NOT do: Enforce page access or manage feature flag targeting.
 
 "use client";
+import { t } from "@/common/i18n";
 import Link from "next/link";
 import menu from "./menu";
 import { TbLock } from "react-icons/tb";
@@ -111,7 +112,7 @@ export default function SidebarPanel() {
                 >
                   {(item as Divider).path ? (
                     <Link href={(item as Divider).path ?? ""}>
-                      {(item as Divider).divider}
+                      {t((item as Divider).divider ?? "")}
                     </Link>
                   ) : (
                     (item as Divider).divider
