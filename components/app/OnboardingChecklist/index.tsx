@@ -6,6 +6,7 @@
  */
 
 "use client";
+import { t } from "@/common/i18n";
 
 import { useQuery } from "@apollo/client/react";
 import { useUserContext } from "@/contexts/UserSetupContext";
@@ -62,14 +63,14 @@ export default function OnboardingChecklist() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 mb-4 border-b border-default">
         <div>
           <h3 className="text-lg font-semibold text-primary dark:text-cream">
-            Get started
+            {t("Get started")}
           </h3>
           <p className="text-xs text-gray-500 dark:text-gray-400">
-            Complete these steps to activate your Cipherwill.
+            {t("Complete these steps to activate your Cipherwill.")}
           </p>
         </div>
         <div className="text-xs font-semibold px-2.5 py-1 bg-gray-100 dark:bg-darkAccent rounded-full text-gray-700 dark:text-gray-300 w-fit">
-          {completedCount} of 3 complete
+          {completedCount}{t(" of 3 complete")}
         </div>
       </div>
 
