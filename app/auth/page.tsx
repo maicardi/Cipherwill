@@ -1,3 +1,4 @@
+import { t } from "@/common/i18n";
 import { Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,9 +8,9 @@ import { FULL_HOSTNAME } from "@/common/constant";
 import { BiCheckCircle } from "react-icons/bi";
 import bg from "./bg.webp";
 
-const title = "Log in • Cipherwill";
+const title = t("Log in • Cipherwill");
 const description =
-  "New to Cipherwill or already have an account? Create your account here or sign in to manage your digital assets securely.";
+  t("New to Cipherwill or already have an account? Create your account here or sign in to manage your digital assets securely.");
 
 export const metadata = {
   title,
@@ -41,7 +42,7 @@ export default function Login({ params }) {
           <Suspense
             fallback={
               <div className="py-6 max-w-md w-full mx-auto animate-pulse">
-                Loading Authentication...
+                {t("Loading Authentication...")}
               </div>
             }
           >
@@ -53,21 +54,21 @@ export default function Login({ params }) {
         <div className="flex flex-col justify-center w-full h-full rounded-xl p-8">
           <div className="flex flex-col gap-8 text-white">
             <h2 className="text-4xl font-semibold">
-              Built on Trust. Backed by Thousands. <br />
-              Designed with Security in Mind.
+              {t("Built on Trust. Backed by Thousands.")} <br />
+              {t("Designed with Security in Mind.")}
             </h2>
             <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4 font-semibold">
               <div className="flex items-center gap-1 whitespace-nowrap">
                 <BiCheckCircle className="text-xl" />
-                End-to-End Encrypted
+                {t("End-to-End Encrypted")}
               </div>
               <div className="flex items-center gap-1 whitespace-nowrap">
                 <BiCheckCircle className="text-xl" />
-                Peace of Mind
+                {t("Peace of Mind")}
               </div>
               <div className="flex items-center gap-1 whitespace-nowrap">
                 <BiCheckCircle className="text-xl" />
-                Start with $0
+                {t("Start with $0")}
               </div>
             </div>
           </div>
