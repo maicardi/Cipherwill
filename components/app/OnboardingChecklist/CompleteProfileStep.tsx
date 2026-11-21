@@ -6,6 +6,7 @@
  */
 
 "use client";
+import { t } from "@/common/i18n";
 
 import Link from "next/link";
 import { BiCheckCircle, BiCircle } from "react-icons/bi";
@@ -39,10 +40,10 @@ export default function CompleteProfileStep({ isComplete }: CompleteProfileStepP
               : "text-gray-800 dark:text-gray-200 group-hover:text-primary"
           }`}
         >
-          Add profile info
+          {t("Add profile info")}
         </span>
         <span className="text-xs text-gray-500 dark:text-gray-400 leading-normal">
-          Generates your schedule for automated will execution events.
+          {t("Generates your schedule for automated will execution events.")}
         </span>
       </div>
     </Link>
