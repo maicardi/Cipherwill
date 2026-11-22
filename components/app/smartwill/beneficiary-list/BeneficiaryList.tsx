@@ -1,4 +1,5 @@
 "use client";
+import { t } from "@/common/i18n";
 
 import { useQuery } from "@apollo/client/react";
 import GET_SMARTWILL_BENEFICIARY from "../../../../graphql/ops/app/smartwill/queries/GET_SMARTWILL_BENEFICIARY";
@@ -26,7 +27,7 @@ export default function BeneficiaryList({
   const { data: beneficiary_key_count } = useQuery<BeneficiaryKeyCountData>(
     GET_BENEFICIARY_KEY_COUNT
   );
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>{t("Loading...")}</div>;
   if (error) return <div>Error: {error.message} </div>;
 
   return (
@@ -66,18 +67,18 @@ function BeneficiaryListById({
     }
   );
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>{t("Loading...")}</div>;
   if (error) return <div>Error: {error.message} </div>;
 
   if (!data || data.getPersonByIds.length === 0)
     return (
       <div className="text-gray-400" data-cy="no-beneficiaries">
-        No Beneficiaries
+        {t("No Beneficiaries")}
       </div>
     );
 
   if (beneficiary_key_count === null) {
-    return <div>Beneficiary data count is null</div>;
+    return <div>{t("Beneficiary data count is null")}</div>;
   }
 
   return (

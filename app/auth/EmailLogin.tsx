@@ -1,3 +1,4 @@
+import { t } from "@/common/i18n";
 // What it does: Displays email sign-in and password-reset actions.
 // What it owns: Form state and honest feedback for accepted or skipped reset emails.
 // What it does NOT do: Decide whether the target email address is verified.
@@ -21,28 +22,28 @@ export default function EmailLogin() {
 
   return (
     <>
-      <h1 className="text-2xl font-semibold py-8">Welcome to Cipherwill</h1>
+      <h1 className="text-2xl font-semibold py-8">{t("Welcome to Cipherwill")}</h1>
       <form
         onSubmit={(e) => {
           e.preventDefault();
         }}
         className="flex flex-col gap-2 mb-4"
       >
-        <label className="font-semibold text-black">Email</label>
+        <label className="font-semibold text-black">{t("Email")}</label>
         <input
           name="email"
           type="text"
-          placeholder="Enter email address"
+          placeholder={t("Enter email address")}
           className="px-4 py-2 border rounded-md dark:bg-neutral-800 font-semibold"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label className="font-semibold text-black">Password</label>
+        <label className="font-semibold text-black">{t("Password")}</label>
         <div className="flex items-center justify-between">
           <input
             name="password"
             type={viewPassword ? "text" : "password"}
-            placeholder="Enter password"
+            placeholder={t("Enter password")}
             className="w-full px-4 py-2 border rounded-md dark:bg-neutral-800 font-semibold"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -63,7 +64,7 @@ export default function EmailLogin() {
         </div>
         {error !== null && (
           <div id="error" className="text-red-500 text-sm">
-            Error: {error}
+            {t("Error: ")}{error}
           </div>
         )}
 
@@ -85,7 +86,7 @@ export default function EmailLogin() {
               //   }
               // }}
             >
-              Forgot password?
+              {t("Forgot password?")}
             </div>
           }
         >
@@ -99,8 +100,8 @@ export default function EmailLogin() {
           onClick={async () => {
             setError(null);
             if (!email || !password)
-              return setError("Email or password is empty");
-            if (!email.includes("@")) return setError("Email is invalid");
+              return setError(t("Email or password is empty"));
+            if (!email.includes("@")) return setError(t("Email is invalid"));
 
             const res = await signInWithEmailAndPassword(email, password);
             if (res && res.error) {
@@ -108,15 +109,15 @@ export default function EmailLogin() {
             }
           }}
         >
-          Sign In
+          {t("Sign In")}
         </button>
         <button
           className="border border-primary transition-colors duration-300 hover:bg-primary-50 text-primary hover:cursor-pointer p-2 rounded-full font-semibold"
           onClick={async () => {
             setError(null);
             if (!email || !password)
-              return setError("Email or password is empty");
-            if (!email.includes("@")) return setError("Email is invalid");
+              return setError(t("Email or password is empty"));
+            if (!email.includes("@")) return setError(t("Email is invalid"));
 
             const res = await createUserWithEmailAndPassword(email, password);
             if (res && res.error) {
@@ -124,7 +125,7 @@ export default function EmailLogin() {
             }
           }}
         >
-          Sign Up
+          {t("Sign Up")}
         </button>
       </form>
     </>

@@ -1,3 +1,4 @@
+import { t } from "@/common/i18n";
 import { JSX } from "react";
 
 export default function SidebarItem({
@@ -13,7 +14,7 @@ export default function SidebarItem({
     <div className="flex items-center justify-between p-2 rounded-md cursor-pointer">
       <div className="flex items-center">
         <div className={`mr-2 text-xl sm:text-lg`}>{icon}</div>
-        <div className={`text-base sm:text-sm font-medium`}>{title}</div>
+        <div className={`text-base sm:text-sm font-medium`}>{t(title)}</div>
       </div>
       <div>{trailing_element}</div>
     </div>

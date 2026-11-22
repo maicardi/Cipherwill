@@ -5,6 +5,7 @@
  */
 
 "use client";
+import { t } from "@/common/i18n";
 
 import { useAuth } from "@/contexts/AuthContext";
 import Image from "next/image";
@@ -70,7 +71,7 @@ export default function MobileHeader() {
                 }, 300);
               }}
             >
-              Homepage
+              {t("Homepage")}
             </div>
             {menu.map((item) => {
               return (
@@ -85,7 +86,7 @@ export default function MobileHeader() {
                         }, 300);
                       }}
                     >
-                      {item.title}
+                      {t(item.title)}
                     </div>
 
                     {item.mobile_hover && (
@@ -129,7 +130,7 @@ export default function MobileHeader() {
             href="/app"
             className="py-3 rounded-xl w-full font-semibold text-sm active:scale-[0.98] transition-all duration-200"
           >
-            {user ? "Go to dashboard" : "Login/Signup"}
+            {user ? t("Go to dashboard") : t("Login/Signup")}
           </SimpleButton>
         </div>
       </div>

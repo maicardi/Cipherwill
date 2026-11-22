@@ -1,4 +1,5 @@
 "use client";
+import { t } from "@/common/i18n";
 import dynamic from "next/dynamic";
 const EmailLogin = dynamic(() => import("./EmailLogin"));
 import { useSearchParams } from "next/navigation";
@@ -22,7 +23,7 @@ export default function LoginSection() {
       <div className="flex items-center justify-between w-full my-6">
         <div className="h-[1px] bg-gray-300 w-full" />
         <div className="text-gray-400 px-4 whitespace-nowrap">
-          or continue with
+          {t("or continue with")}
         </div>
         <div className="h-[1px] bg-gray-300 w-full" />
       </div>
@@ -63,10 +64,10 @@ export default function LoginSection() {
         </div>
         {isGoogleLoading ? (
           <div className="font-medium text-black animate-pulse">
-            Authentication in progress...
+            {t("Authentication in progress...")}
           </div>
         ) : (
-          <div className="font-semibold text-black">Continue with Google</div>
+          <div className="font-semibold text-black">{t("Continue with Google")}</div>
         )}
       </button>
     </div>

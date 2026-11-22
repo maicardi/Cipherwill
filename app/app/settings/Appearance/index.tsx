@@ -1,4 +1,5 @@
 "use client";
+import { t } from "@/common/i18n";
 
 import { useTheme } from "@/contexts/ThemeSelector";
 import { BsCircle, BsCircleFill } from "react-icons/bs";
@@ -11,10 +12,10 @@ export default function Appearance() {
   const { current_theme, setCurrentTheme } = useTheme();
   return (
     <div className="border border-default w-full max-w-2xl rounded-md bg-secondary">
-      <h2 className="font-semibold border-b border-default p-3">Appearance</h2>
+      <h2 className="font-semibold border-b border-default p-3">{t("Appearance")}</h2>
       <div className="p-3">
         <div className="text-sm font-medium text-neutral-600 dark:text-neutral-300">
-          We will use your selected theme for Cipherwill platform.
+          {t("We will use your selected theme for Cipherwill platform.")}
         </div>
         <div className="flex flex-col sm:flex-row items-center gap-4 py-4">
           <button
@@ -30,7 +31,7 @@ export default function Appearance() {
             <Image src={dark} alt="Dark Theme" />
             <div className="flex items-center gap-1 pt-2 text-sm">
               {current_theme === "dark" ? <BsCircleFill /> : <BsCircle />}
-              <span>Dark</span>
+              <span>{t("Dark")}</span>
             </div>
           </button>
           <button
@@ -42,7 +43,7 @@ export default function Appearance() {
             <Image src={light} alt="Light Theme" />
             <div className="flex items-center gap-1 pt-2 text-sm">
               {current_theme === "light" ? <BsCircleFill /> : <BsCircle />}
-              <span>Light</span>
+              <span>{t("Light")}</span>
             </div>
           </button>
           <button
@@ -58,7 +59,7 @@ export default function Appearance() {
             <Image src={systemImg} alt="System Theme" />
             <div className="flex items-center gap-1 pt-2 text-sm">
               {current_theme === "system" ? <BsCircleFill /> : <BsCircle />}
-              <span>System</span>
+              <span>{t("System")}</span>
             </div>
           </button>
         </div>

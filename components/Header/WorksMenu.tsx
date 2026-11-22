@@ -3,6 +3,7 @@
  * Owns the split-pane mega-menu contents and mobile links.
  * Does NOT handle the main header container states or styling.
  */
+import { t } from "@/common/i18n";
 
 import Link from "next/link";
 
@@ -14,50 +15,50 @@ export function WorksMenuDesktop() {
         <Link href={"/how-it-works"} className="group">
           <div className="hover:bg-neutral-100/70 p-3 rounded-xl transition-all duration-200">
             <div className="font-semibold text-base text-forest group-hover:text-primary transition-colors">
-              Platform Overview
+              {t("Platform Overview")}
             </div>
             <div className="text-sm text-forest/70 mt-1 leading-relaxed">
-              How Cipherwill secures your digital legacy.
+              {t("How Cipherwill secures your digital legacy.")}
             </div>
           </div>
         </Link>
         <Link href={"/i/how-execution-timeline-works"} className="group">
           <div className="hover:bg-neutral-100/70 p-3 rounded-xl transition-all duration-200">
             <div className="font-semibold text-base text-forest group-hover:text-primary transition-colors">
-              Will Execution
+              {t("Will Execution")}
             </div>
             <div className="text-sm text-forest/70 mt-1 leading-relaxed">
-              See how assets transfer securely when needed.
+              {t("See how assets transfer securely when needed.")}
             </div>
           </div>
         </Link>
         <Link href={"/how-factors-work"} className="group">
           <div className="hover:bg-neutral-100/70 p-3 rounded-xl transition-all duration-200">
             <div className="font-semibold text-base text-forest group-hover:text-primary transition-colors">
-              Security Factors
+              {t("Security Factors")}
             </div>
             <div className="text-sm text-forest/70 mt-1 leading-relaxed">
-              Discover client-side decryption safeguards.
+              {t("Discover client-side decryption safeguards.")}
             </div>
           </div>
         </Link>
         <Link href={"/i/cascade-encryption"} className="group">
           <div className="hover:bg-neutral-100/70 p-3 rounded-xl transition-all duration-200">
             <div className="font-semibold text-base text-forest group-hover:text-primary transition-colors">
-              Encryption Layers
+              {t("Encryption Layers")}
             </div>
             <div className="text-sm text-forest/70 mt-1 leading-relaxed">
-              A deep-dive into our Cascade Encryption.
+              {t("A deep-dive into our Cascade Encryption.")}
             </div>
           </div>
         </Link>
         <Link href={"/i/time-capsule-encryption"} className="group">
           <div className="hover:bg-neutral-100/70 p-3 rounded-xl transition-all duration-200">
             <div className="font-semibold text-base text-forest group-hover:text-primary transition-colors">
-              Time Capsule
+              {t("Time Capsule")}
             </div>
             <div className="text-sm text-forest/70 mt-1 leading-relaxed">
-              Understand our time-released cryptographic vault.
+              {t("Understand our time-released cryptographic vault.")}
             </div>
           </div>
         </Link>
@@ -67,14 +68,14 @@ export function WorksMenuDesktop() {
       <div className="w-72 bg-clay/10 border border-clay/20 p-5 rounded-xl flex flex-col justify-between">
         <div>
           <h4 className="font-bold text-forest text-lg leading-tight">
-            Completely Private
+            {t("Completely Private")}
           </h4>
           <p className="text-base text-forest/80 mt-2 leading-relaxed">
-            Your data is encrypted client-side. We can never read your keys or see your data.
+            {t("Your data is encrypted client-side. We can never read your keys or see your data.")}
           </p>
         </div>
         <Link href="/app" className="font-semibold text-sm text-primary hover:text-primary-700 mt-4 inline-flex items-center transition-colors">
-          Get Started →
+          {t("Get Started →")}
         </Link>
       </div>
     </div>
@@ -84,11 +85,11 @@ export function WorksMenuDesktop() {
 export function WorksMenuMobile() {
   return (
     <div className="p-2 flex flex-col gap-2 font-medium">
-      <Link href={"/how-it-works"}>Platform Overview</Link>
-      <Link href={"/i/how-execution-timeline-works"}>Will Execution</Link>
-      <Link href={"/how-factors-work"}>Security Factors</Link>
-      <Link href={"/i/cascade-encryption"}>Encryption Layers</Link>
-      <Link href={"/i/time-capsule-encryption"}>Time Capsule Encryption</Link>
+      <Link href={"/how-it-works"}>{t("Platform Overview")}</Link>
+      <Link href={"/i/how-execution-timeline-works"}>{t("Will Execution")}</Link>
+      <Link href={"/how-factors-work"}>{t("Security Factors")}</Link>
+      <Link href={"/i/cascade-encryption"}>{t("Encryption Layers")}</Link>
+      <Link href={"/i/time-capsule-encryption"}>{t("Time Capsule Encryption")}</Link>
     </div>
   );
 }

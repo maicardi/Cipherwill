@@ -6,6 +6,7 @@
  */
 
 "use client";
+import { t } from "@/common/i18n";
 
 import Link from "next/link";
 import { BiCheckCircle, BiCircle } from "react-icons/bi";
@@ -39,10 +40,10 @@ export default function AddBeneficiaryStep({ isComplete }: AddBeneficiaryStepPro
               : "text-gray-800 dark:text-gray-200 group-hover:text-primary"
           }`}
         >
-          Add a beneficiary
+          {t("Add a beneficiary")}
         </span>
         <span className="text-xs text-gray-500 dark:text-gray-400 leading-normal">
-          Appoint a nominee to safely inherit your secured data.
+          {t("Appoint a nominee to safely inherit your secured data.")}
         </span>
       </div>
     </Link>

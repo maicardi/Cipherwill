@@ -1,5 +1,7 @@
 # Cipherwill Client
 
+[🇮🇹 Versione italiana](README.it.md)
+
 The **Open Source Cipherwill Web Client** is a user-friendly, secure interface for managing digital assets and creating digital wills. This web application allows individuals to organize their digital and physical information, encrypt it, and assign beneficiaries for seamless transfer upon their passing.
 
 ## Key Features

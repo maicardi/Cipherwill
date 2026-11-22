@@ -1,4 +1,5 @@
 "use client";
+import { t } from "@/common/i18n";
 import { useQuery } from "@apollo/client/react";
 import GET_METAMODEL_TYPE_COUNTS from "../../../graphql/ops/app/metamodel/queries/GET_METAMODEL_TYPE_COUNTS";
 import { GetMetamodelTypeCountsQuery } from "@/types/interfaces/metamodel";
@@ -17,9 +18,9 @@ export default function SecuredCounter() {
       <div className="flex flex-col gap-3 bg-secondary border border-default rounded-2xl p-4 h-96 overflow-auto customScrollbar">
         <div className="flex items-center gap-3">
           <TbShieldCheck className="text-primary" size={24} />
-          <h2 className="font-semibold text-lg">Secured Items</h2>
+          <h2 className="font-semibold text-lg">{t("Secured Items")}</h2>
         </div>
-        <div className="text-sm text-red-500">Error loading data</div>
+        <div className="text-sm text-red-500">{t("Error loading data")}</div>
       </div>
     );
 
@@ -40,13 +41,13 @@ export default function SecuredCounter() {
       >
         <div className="flex items-center gap-3">
         <TbShieldCheck className="text-primary flex-shrink-0" size={24} />
-        <h2 className="font-semibold text-lg">Secured Data</h2>
+        <h2 className="font-semibold text-lg">{t("Secured Data")}</h2>
       </div>
 
       <div className="">
-        You've secured{" "}
+        {t("You've secured ")}{" "}
         <span className="font-semibold">{typesCount}</span>{" "}
-        {totalCount === 1 ? "type" : "types"} of data
+        {totalCount === 1 ? t("type") : t("types")}{t(" of data")}
       </div>
 
       {data?.getMetamodelTypeCounts && data.getMetamodelTypeCounts.length > 0 && (
@@ -69,7 +70,7 @@ export default function SecuredCounter() {
       </div>
 
       <div className="flex items-center justify-between pt-2 border-t border-default">
-        <span className="font-medium">Total Secured Data Points</span>
+        <span className="font-medium">{t("Total Secured Data Points")}</span>
         <span className="font-bold">
           {totalCount.toLocaleString()}
         </span>

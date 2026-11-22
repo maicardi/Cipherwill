@@ -2,6 +2,7 @@
 // What it owns: Navigation links to profile settings and home, plus the logout action.
 // What it does NOT do: Manage authentication state or render page titles.
 "use client";
+import { t } from "@/common/i18n";
 
 import Link from "next/link";
 import Popup from "reactjs-popup";
@@ -17,7 +18,7 @@ export default function ProfilePopup() {
       trigger={
         <button
           type="button"
-          aria-label="Account menu"
+          aria-label={t("Account menu")}
           className="flex items-center justify-center w-10 h-10 rounded-full bg-white dark:bg-slate-800 shadow-md hover:bg-gray-100 hover:cursor-pointer"
         >
           <AiOutlineUser size={24} />
@@ -33,7 +34,7 @@ export default function ProfilePopup() {
           <div className="mr-2 text-xl">
             <AiOutlineUser />
           </div>
-          <div className="text-sm font-medium">Profile</div>
+          <div className="text-sm font-medium">{t("Profile")}</div>
         </Link>
         <Link
           href={`/`}
@@ -42,7 +43,7 @@ export default function ProfilePopup() {
           <div className="mr-2 text-xl">
             <IoHomeOutline />
           </div>
-          <div className="text-sm font-medium">Home page</div>
+          <div className="text-sm font-medium">{t("Home page")}</div>
         </Link>
         <div
           data-cy="logout-btn"
@@ -54,7 +55,7 @@ export default function ProfilePopup() {
           <div className="mr-2 text-xl">
             <TbLogout />
           </div>
-          <div className="text-sm font-medium">Logout</div>
+          <div className="text-sm font-medium">{t("Logout")}</div>
         </div>
       </div>
     </Popup>

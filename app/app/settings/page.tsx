@@ -1,4 +1,5 @@
 "use client";
+import { t } from "@/common/i18n";
 
 import ApplicationSettings from "./ApplicationSettings";
 import DevOnly from "../../../components/debug/DevOnly";
@@ -52,7 +53,7 @@ export default function Settings() {
 
   return (
     <div className="w-full">
-      <DesktopAndMobilePageHeader title="Settings" />
+      <DesktopAndMobilePageHeader title={t("Settings")} />
 
       <div className="">
         <div className="flex items-center p-2">
@@ -62,7 +63,7 @@ export default function Settings() {
           `}
             onClick={() => changeTab("DEFAULT")}
           >
-            General Settings
+            {t("General Settings")}
           </button>
           <button
             className={`mx-2 hover:cursor-pointer
@@ -70,7 +71,7 @@ export default function Settings() {
           `}
             onClick={() => changeTab("PROFILE")}
           >
-            Profile
+            {t("Profile")}
           </button>
           <button
             className={`mx-2 hover:cursor-pointer
@@ -78,7 +79,7 @@ export default function Settings() {
           `}
             onClick={() => changeTab("BACKUP")}
           >
-            Backup
+            {t("Backup")}
           </button>
           <button
             className={`mx-2 hover:cursor-pointer
@@ -86,7 +87,7 @@ export default function Settings() {
           `}
             onClick={() => changeTab("USAGE")}
           >
-            Usage
+            {t("Usage")}
           </button>
           <DevOnly>
             <button
@@ -96,7 +97,7 @@ export default function Settings() {
               }`}
               onClick={() => changeTab("APPLICATION")}
             >
-              Application
+              {t("Application")}
             </button>
           </DevOnly>
           <DevOnly>
@@ -107,7 +108,7 @@ export default function Settings() {
               }`}
               onClick={() => changeTab("WILL_EVENTS")}
             >
-              Will Events
+              {t("Will Events")}
             </button>
           </DevOnly>
         </div>

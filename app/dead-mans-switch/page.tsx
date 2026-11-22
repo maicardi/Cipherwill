@@ -1,3 +1,4 @@
+import { t } from "@/common/i18n";
 /*
  * page.tsx
  * What it does: Renders the public explainer page for Dead Man's Switch.
@@ -13,9 +14,9 @@ import CTA from "@/components/public/CTA";
 import Link from "next/link";
 import DeadMansSwitchFlow from "./DeadMansSwitchFlow";
 
-const title = "End-to-End Encrypted Dead Man's Switch - Cipherwill";
+const title = t("End-to-End Encrypted Dead Man's Switch - Cipherwill");
 const description =
-  "Cipherwill is an End-to-End Encrypted Dead Man's Switch, securely automating asset transfers to loved ones when you're gone, with advanced encryption and ease.";
+  t("Cipherwill is an End-to-End Encrypted Dead Man's Switch, securely automating asset transfers to loved ones when you're gone, with advanced encryption and ease.");
 
 export const metadata = {
   title,
@@ -39,10 +40,10 @@ export default function DeadMansSwitch() {
       <section className="pt-40 pb-16 px-4 text-center max-w-4xl mx-auto">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-forest/10 bg-parchment/50 text-xs font-semibold mb-6">
           <span className="w-1.5 h-1.5 rounded-full bg-clay" />
-          Autonomous Protection
+          {t("Autonomous Protection")}
         </div>
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-playfair font-bold text-forest leading-tight">
-          Dead Man's Switch
+          {t("Dead Man's Switch")}
         </h1>
         <p className="mt-6 text-base sm:text-lg text-forest/70 max-w-xl mx-auto font-medium leading-relaxed">
           {description}
@@ -53,7 +54,7 @@ export default function DeadMansSwitch() {
       <section className="px-4 py-8 max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <h2 className="font-playfair font-bold text-3xl text-forest">
-            How the Switch Works
+            {t("How the Switch Works")}
           </h2>
           <p className="text-forest/60 text-sm mt-2 font-medium">
             Click on each phase to visualize how Cipherwill securely loops your data from browser to backup.

@@ -5,6 +5,7 @@
  */
 
 "use client";
+import { t } from "@/common/i18n";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -26,7 +27,7 @@ export default function Hero() {
           className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-sage/10 border border-sage/20 text-sage font-gilroy font-semibold text-xs tracking-wider uppercase"
         >
           <TbShieldCheck className="w-4 h-4" />
-          <span>End-to-End Encrypted Dead {"Man's"} Switch</span>
+          <span>{t("End-to-End Encrypted Dead Man's Switch")}</span>
         </motion.div>
 
         {/* Main Editorial Headline */}
@@ -36,7 +37,7 @@ export default function Hero() {
           transition={{ delay: 0.1 }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight font-gilroy font-black text-forest max-w-5xl w-full"
         >
-          Your life is digital.<br />Why your will is still on paper?
+          {t("Your life is digital.")}<br />{t("Why your will is still on paper?")}
         </motion.h1>
 
         {/* Calming Body Copy / Description */}
@@ -46,7 +47,7 @@ export default function Hero() {
           transition={{ delay: 0.2 }}
           className="text-lg md:text-xl max-w-3xl text-forest/80 font-gilroy font-medium leading-relaxed"
         >
-          Securely pass down your crypto, code, cloud storage, and digital legacy to the people who matter. No 2FA lockouts. No lost assets.
+          {t("Securely pass down your crypto, code, cloud storage, and digital legacy to the people who matter. No 2FA lockouts. No lost assets.")}
         </motion.p>
 
         {/* Action CTAs / Buttons */}
@@ -61,7 +62,7 @@ export default function Hero() {
               href="/app" 
               className="flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-primary text-white font-gilroy font-semibold text-base transition-colors hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 active:bg-primary-800 shadow-level-1"
             >
-              <span>Get Started →</span>
+              <span>{t("Get Started →")}</span>
             </Link>
           </motion.div>
           
@@ -70,7 +71,7 @@ export default function Hero() {
               href="/how-it-works" 
               className="flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-transparent border border-forest/20 text-forest font-gilroy font-semibold text-base transition-colors hover:bg-forest/5 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
             >
-              <span>Learn How it Works</span>
+              <span>{t("Learn How it Works")}</span>
             </Link>
           </motion.div>
         </motion.div>

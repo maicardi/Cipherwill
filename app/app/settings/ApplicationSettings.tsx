@@ -1,4 +1,5 @@
 "use client";
+import { t } from "@/common/i18n";
 
 import { useMutation } from "@apollo/client/react";
 import DELETE_DATA from "../../../graphql/ops/auth/mutations/DELETE_DATA";
@@ -22,9 +23,9 @@ export default function ApplicationSettings() {
       {isDevelopment && (
         <div className="flex items-center justify-between py-2">
           <div>
-            <div>Recheck actions validation</div>
+            <div>{t("Recheck actions validation")}</div>
             <div className="text-sm text-gray-500">
-              Runs the same objective validation check used by cron, only for your user.
+              {t("Runs the same objective validation check used by cron, only for your user.")}
             </div>
           </div>
           <button
@@ -35,74 +36,73 @@ export default function ApplicationSettings() {
               try {
                 const response = await recheckMyActionsValidation();
                 if ((response.data as any)?.recheckMyActionsValidation) {
-                  toast.success("Actions validation recheck completed");
+                  toast.success(t("Actions validation recheck completed"));
                 } else {
-                  toast.error("Recheck is available only in development mode");
+                  toast.error(t("Recheck is available only in development mode"));
                 }
               } catch (error) {
-                toast.error("Failed to recheck actions validation");
+                toast.error(t("Failed to recheck actions validation"));
               }
             }}
           >
-            {isRecheckRunning ? "Rechecking..." : "Recheck"}
+            {isRecheckRunning ? t("Rechecking...") : t("Recheck")}
           </button>
         </div>
       )}
 
       <div className="flex items-center justify-between py-2">
         <div>
-          <div>Delete All data</div>
+          <div>{t("Delete All data")}</div>
           <div className="text-sm text-gray-500">
-            This will delete all data items, smart will, peoples, factors
+            {t("This will delete all data items, smart will, peoples, factors")}
           </div>
         </div>
         <button
           data-cy="reset-account-button"
           className="bg-red-500 hover:bg-red-700 text-white px-2 rounded-sm"
           onClick={async () => {
-            const cnf = confirm("Are you sure you want to delete all data");
+            const cnf = confirm(t("Are you sure you want to delete all data"));
             if (cnf) {
               await deleteData();
-              toast.success("All data deleted");
+              toast.success(t("All data deleted"));
               await sleep(2000);
               window.location.reload();
             }
           }}
         >
-          Reset Account
+          {t("Reset Account")}
         </button>
       </div>
 
       <div className="flex items-center justify-between py-2">
         <div>
-          <div>Delete My Account</div>
+          <div>{t("Delete My Account")}</div>
           <div className="text-sm text-gray-500">
-            This will deactivate your account and delete your vault data and
-            beneficiary connections. Your other account information will be retained.
+            {t("This will deactivate your account and delete your vault data and beneficiary connections. Your other account information will be retained.")}
           </div>
         </div>
         <button
           data-cy="remove-account-button"
           className="bg-red-500 hover:bg-red-700 text-white px-2 rounded-sm"
           onClick={async () => {
-            const cnf = confirm("Are you sure you want to delete your account");
+            const cnf = confirm(t("Are you sure you want to delete your account"));
             if (cnf) {
               await deleteAccount();
-              toast.success("Deleted your account");
+              toast.success(t("Deleted your account"));
               await sleep(2000);
               logout();
             }
           }}
         >
-          Delete Account
+          {t("Delete Account")}
         </button>
       </div>
 
       <div className="flex items-center justify-between py-2">
         <div>
-          <div>Fetch all data items</div>
+          <div>{t("Fetch all data items")}</div>
           <div className="text-sm text-gray-500">
-            This will fetch all data models.
+            {t("This will fetch all data models.")}
           </div>
         </div>
 
